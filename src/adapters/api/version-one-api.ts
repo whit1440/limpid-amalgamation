@@ -28,7 +28,6 @@ export default class VersionOneApi implements Api {
   }
   private convertSprintResponseToArray(json: any): Array<Sprint> {
     let sprints: Array<Sprint> = new Array<Sprint>()
-    console.log(json)
     for (var i in json.Assets) {
       sprints.push(SprintConverter.jsonToSprint(json.Assets[i]))
     }
@@ -50,7 +49,6 @@ export default class VersionOneApi implements Api {
   private findSprintByName(name: string, sprints: Array<Sprint>): Sprint|null {
     var output: Sprint|null = null
     for (let sprint of sprints) {
-      console.log('comparing', sprint.title, 'to', name)
       if (sprint.title === name) {
         output = sprint
         break;
@@ -72,10 +70,8 @@ export default class VersionOneApi implements Api {
     .then(this.convertSprintResponseToArray)
     .then((stories: Array<Sprint>) => {
       if (title) {
-        console.log('getting sprint by name')
         return this.findSprintByName(title, stories)
       } else {
-        console.log('getting sprint by time')
         return this.findCurrentSprint(stories)
       }
     })
@@ -86,9 +82,6 @@ export default class VersionOneApi implements Api {
   }
   updateStory(story: Story) {
     return this.http.createRequest('POST', this.storyEndpoint + `/${story.id}`, StoryConverter.storyToJson(story))
-    .then((resp) => {
-      console.log(resp)
-    })
   }
   updateStories(stories: Array<Story>): Promise<any> {
     let requests: Array<Promise<any>> = new Array<Promise<any>>()
@@ -96,8 +89,5 @@ export default class VersionOneApi implements Api {
       requests.push(this.updateStory(story))
     })
     return Promise.all(requests)
-    .then((responses) => {
-      console.log(responses[0])
-    })
   }
 }

@@ -18,6 +18,6 @@ export default class VersionOneApi implements Api {
     getStory(storyNumber: string): Promise<Story | void>;
     getSprint(schedule: string, title?: string): Promise<Sprint | void | null>;
     getStoriesInSprint(sprint: Sprint): Promise<Array<Story>>;
-    updateStory(story: Story): Promise<void>;
+    updateStory(story: Story): Promise<any>;
     updateStories(stories: Array<Story>): Promise<any>;
 }

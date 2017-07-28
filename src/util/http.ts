@@ -49,7 +49,6 @@ export default class Http {
         console.log(`Would request to ${url}`, requestBody)
         resolve({})
       } else {
-        console.log(`Request to ${url}`, requestBody)
         var body = "";
         request({
           method: requestType,

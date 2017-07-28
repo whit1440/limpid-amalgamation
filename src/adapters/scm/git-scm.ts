@@ -27,7 +27,6 @@ export default class GitScm implements Scm {
   }
   private checkCommitDateAndAddToArray(c: Commit, d: Date, a: Array<string>): Promise<Array<string>> {
     if (c.date().getTime() > d.getTime()) {
-      console.log("pushing", c.message())
       a.push(c.message());
       if (c.parentcount() > 0) {
         return c.parent(0).then((p: Commit) => {
@@ -45,25 +44,25 @@ export default class GitScm implements Scm {
   }
 
   getCurrentBranch(): Promise<string|void> {
-    return Repository.open('.')
+    return Repository.open(this.path)
     .then(this.getBranchRefFromRepo)
     .then(this.getBranchNameFromRef)
   }
 
   getLatestCommitSha(): Promise<string|void> {
-    return Repository.open('.')
+    return Repository.open(this.path)
     .then(this.getHeadFromRepo)
     .then(this.getShaFromCommit)
   }
 
   getLatestCommitMessage(): Promise<string|void> {
-    return Repository.open('.')
+    return Repository.open(this.path)
     .then(this.getHeadFromRepo)
     .then(this.getMessageFromCommit)
   }
 
   getCommitLogsSinceDate(date: Date): Promise<Array<string>> {
-    return Repository.open('.')
+    return Repository.open(this.path)
     .then((repo: Repository) => {
       return repo.getHeadCommit()
     })
