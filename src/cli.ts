@@ -1,7 +1,6 @@
 import * as yargs from 'yargs'
 import App, {AppConfigReader} from './app/main'
 
-
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 let args = yargs

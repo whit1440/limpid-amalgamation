@@ -6,7 +6,7 @@ import Scm from '../interfaces/scm-interface'
 import Story from '../entities/Story'
 import Sprint from '../entities/Sprint'
 
-export default class DeployUseCase extends UseCase {
+export default class BuildReleaseUseCase extends UseCase {
   private targetTier: string
   private previousTier: string
 
