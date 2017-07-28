@@ -2,9 +2,8 @@
   "name": "v1",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/cli",
-  "cli": "lib/cli",
-  "types": "lib/index",
+  "main": "dist/la",
+  "types": "lib/src",
   "scripts": {
     "test": "mocha --watch ./specs --compilers ts:ts-node/register --recursive",
     "run": "./node_modules/nodemon/bin/nodemon.js --ignore lib/ --exec 'ntsc --p tsconfig.json; ./node_modules/.bin/ts-node --compiler ntypescript'  -- ./src/cli.ts"
@@ -35,7 +34,6 @@
     "nodegit": "^0.18.3",
     "q": "^1.5.0",
     "request": "^2.81.0",
-    "systemjs": "^0.20.17",
     "yargs": "^8.0.2"
   }
 }
