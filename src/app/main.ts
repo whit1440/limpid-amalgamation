@@ -55,11 +55,12 @@ export default class App {
       let merge: BuildMergeUseCase = new BuildMergeUseCase(v1, git)
       let release: BuildReleaseUseCase = new BuildReleaseUseCase(v1, git, '', '')
       let deploy: DeployUseCase = new DeployUseCase(v1, git, config.deploy)
-
+      // Important Note: these cases will be evaluated IN ORDER
+      // and the first match will be used.
       let detector: UseCaseDetector = new UseCaseDetector(git, [
         {
-          matcher: config.scm.feature,
-          value: local,
+          matcher: config.scm.release,
+          value: release,
           source: 'branch'
         },
         {
@@ -68,8 +69,8 @@ export default class App {
           source: 'commit'
         },
         {
-          matcher: config.scm.release,
-          value: release,
+          matcher: config.scm.feature,
+          value: local,
           source: 'branch'
         }
       ])
