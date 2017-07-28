@@ -44,7 +44,7 @@ export default class App {
 
       let http: Http = new Http(config.api)
       let v1 = new VersionOneApi(http)
-      let git = new GitScm('.')
+      let git = new GitScm(config.scm.path)
       let logger = new Logger(config.logger.level)
       this.provider.set(http)
       this.provider.set(v1)
