@@ -10,6 +10,45 @@ function CreateApp(argv: any): App {
   return app
 }
 
+export default class Hander {
+  static CreateApp(argv: any): App {
+    let configPath = process.cwd() + '/' + argv.config
+    let configReader = new AppConfigReader(configPath)
+    let app = new App(configReader)
+    return app
+  }
+  static RunLocal(argv: any) {
+    let app = CreateApp(argv)
+    app.setup()
+      .then(() => {
+        app.runLocal()
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
+  static RunDetect(argv: any) {
+    let app = CreateApp(argv)
+    app.setup()
+      .then(() => {
+        app.runDetect()
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
+  static RunDeploy(argv: any) {
+    let app = CreateApp(argv)
+    app.setup()
+      .then(() => {
+        app.runDeploy()
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
+}
+
 let args = yargs
   .command({
     command: 'build-local',
@@ -24,16 +63,7 @@ let args = yargs
         describe: 'The sprint in which to update all merged stories'
       }
     },
-    handler: (argv) => {
-      let app = CreateApp(argv)
-      app.setup()
-        .then(() => {
-          app.runLocal()
-        })
-        .catch((e) => {
-          console.log(e)
-        })
-    }
+    handler: Hander.RunLocal
   })
   .command({
     command: 'build-ci',
@@ -48,16 +78,7 @@ let args = yargs
         describe: 'The sprint in which to update all merged stories'
       }
     },
-    handler: (argv) => {
-      let app = CreateApp(argv)
-      app.setup()
-        .then(() => {
-          app.runDetect()
-        })
-        .catch((e) => {
-          console.log(e)
-        })
-    }
+    handler: Hander.RunDetect
   })
   .command({
     command: 'deploy',
@@ -78,16 +99,7 @@ let args = yargs
       }
     },
     describe: 'Update all merged stories to the target environment',
-    handler: (argv) => {
-      let app = CreateApp(argv)
-      app.setup()
-        .then(() => {
-          app.runDeploy()
-        })
-        .catch((e) => {
-          console.log(e)
-        })
-    }
+    handler: Hander.RunDeploy
   })
   .help()
   .argv
