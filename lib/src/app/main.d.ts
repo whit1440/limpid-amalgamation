@@ -8,9 +8,9 @@ export default class App {
     private findPreviousTier(target, tiers);
     getProvider(): Provider;
     setup(): Promise<AppConfig>;
-    runLocal(): void;
-    runDeploy(): void;
-    runDetect(): void;
+    runLocal(): Promise<void>;
+    runDeploy(): Promise<void>;
+    runDetect(): Promise<void>;
 }
 export declare class AppConfigReader implements ConfigReader {
     private path;

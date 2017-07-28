@@ -19,9 +19,9 @@ export default class Hander {
   }
   static RunLocal(argv: any) {
     let app = CreateApp(argv)
-    app.setup()
+    return app.setup()
       .then(() => {
-        app.runLocal()
+        return app.runLocal()
       })
       .catch((e) => {
         console.log(e)
@@ -29,9 +29,9 @@ export default class Hander {
   }
   static RunDetect(argv: any) {
     let app = CreateApp(argv)
-    app.setup()
+    return app.setup()
       .then(() => {
-        app.runDetect()
+        return app.runDetect()
       })
       .catch((e) => {
         console.log(e)
@@ -39,9 +39,9 @@ export default class Hander {
   }
   static RunDeploy(argv: any) {
     let app = CreateApp(argv)
-    app.setup()
+    return app.setup()
       .then(() => {
-        app.runDeploy()
+        return app.runDeploy()
       })
       .catch((e) => {
         console.log(e)

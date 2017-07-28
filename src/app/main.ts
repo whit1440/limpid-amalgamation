@@ -83,7 +83,7 @@ export default class App {
     })
   }
   runLocal() {
-    (this.provider.get(BuildLocalUseCase) as BuildLocalUseCase)
+    return (this.provider.get(BuildLocalUseCase) as BuildLocalUseCase)
     .run()
     .then(() => {
       console.log('Story Tracking successfully updated for local build')
@@ -93,7 +93,7 @@ export default class App {
     })
   }
   runDeploy() {
-    (this.provider.get(DeployUseCase) as DeployUseCase)
+    return (this.provider.get(DeployUseCase) as DeployUseCase)
     .run()
     .then(() => {
       console.log('Story Tracking successfully updated for local build')
@@ -103,7 +103,7 @@ export default class App {
     })
   }
   runDetect() {
-    (this.provider.get(UseCaseDetector) as UseCaseDetector)
+    return (this.provider.get(UseCaseDetector) as UseCaseDetector)
     .findBuildType().then((useCase: UseCase) => {
       return useCase.run()
     })
