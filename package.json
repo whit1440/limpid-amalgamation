@@ -1,0 +1,39 @@
+{
+  "name": "v1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/cli",
+  "cli": "lib/cli",
+  "types": "lib/index",
+  "scripts": {
+    "test": "mocha --watch ./specs --compilers ts:ts-node/register --recursive",
+    "run": "./node_modules/nodemon/bin/nodemon.js --ignore lib/ --exec 'ntsc --p tsconfig.json; ./node_modules/.bin/ts-node --compiler ntypescript'  -- ./src/cli.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.0.1",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^8.0.12",
+    "@types/nodegit": "^0.18.0",
+    "@types/q": "^1.0.2",
+    "@types/request": "0.0.47",
+    "@types/sinon": "^2.3.3",
+    "@types/yargs": "^8.0.1",
+    "chai": "^4.1.0",
+    "mocha": "^3.4.2",
+    "mocha-typescript": "^1.1.7",
+    "nodemon": "^1.11.0",
+    "ntsc": "^0.2.0",
+    "ntypescript": "^1.201706190042.1",
+    "sinon": "^2.4.1",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.1"
+  },
+  "dependencies": {
+    "nodegit": "^0.18.3",
+    "q": "^1.5.0",
+    "request": "^2.81.0",
+    "yargs": "^8.0.2"
+  }
+}

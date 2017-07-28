@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "strict": true,
+    "outDir": "./lib",
+    "moduleResolution": "node",
+    "declaration": true,
+    "typeRoots": ["node_modules/@types", "lib/**", "node_modules/mocha-typescript/*"]
+  },
+  "include": [
+    "src/**/*",
+    "specs/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib/**/*",
+    "dist/**/*"
+  ]
+}

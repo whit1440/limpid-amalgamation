@@ -1,0 +1,18 @@
+{
+  "api": {
+    "host": "www12.v1host.com",
+    "path": "/CapellaUniversity01",
+    "authToken": "1.qA53RToDvLixBb7GLbhXQjJlfC4="
+  },
+  "scm": {
+    "path": "..",
+    "story": "[a-zA-Z][- ][0-9]{5}",
+    "merge": "Merge branch 'feature/([a-zA-Z][- ][0-9]{5}).*' into '([a-zA-Z]*)'",
+    "feature": "feature/[a-zA-Z][- ][0-9]{5}",
+    "release": "release/[a-zA-Z][- ][0-9]{5}"
+  },
+  "deploy": {
+    "tiers": ["local", "merged", "Dev", "QA", "Stage", "Prod"],
+    "sprintSchedule": "PWT Sprint Schedule"
+  }
+}
